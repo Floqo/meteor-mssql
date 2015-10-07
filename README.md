@@ -1,3 +1,13 @@
+# Adapted from [emgee3/meteor-mssql](https://github.com/emgee3/meteor-mssql)
+
+I wanted to avoid the use of settings.json as I need to deploy on IISNode and am having real issues with configuring the Meteor settings in that environment.
+
+This works exactly like the original version below except it exposes the database settings to your code so you don't have to use the settings.json file.
+
+This is not recommended for security reasons, my usage is in a closed environement.
+
+
+
 # `mssql` for Meteor
 
 A wrapper for the [mssql](https://github.com/patriksimek/node-mssql) node
@@ -11,22 +21,25 @@ method to deliver results to the client.
 
 ## Settings
 
-Database connection settings are pulled from `Meteor.settings`, using the
-following keys:
+Database connection settings are setting using the Sql.database variable and they connection is made using Sql.init():
 
-```json
-    {
-      "database": {
-        "server"   : "192.168.1.1",
-        "database" : "database",
-        "user"     : "username",
-        "password" : "password",
-        "options"  : {
-          "useUTC"     : false,
-          "appName"    : "MeteorApp"
-        }
+```javascript
+
+Meteor.startup(function () {
+  Sql.database =  {
+      "server"   : "192.168.1.1",
+      "database" : "database",
+      "user"     : "username",
+      "password" : "password",
+      "options"  : {
+        "useUTC"     : false,
+        "appName"    : "MeteorApp"
       }
-    }
+  }
+  
+  Sql.init();
+}
+
 ```
 
 ## API
