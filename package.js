@@ -1,6 +1,6 @@
 Package.describe({
   name: "willrbc:mssql",
-  summary: "mssql wrapper: non-reactive SQL Server package (customized)",
+  summary: "mssql wrapper: non-reactive SQL Server package without relying on settings.json (not recommended)",
   version: "1.3.3",
   git: "https://github.com/willrbc/meteor-mssql.git",
   documentation: "README.md"
