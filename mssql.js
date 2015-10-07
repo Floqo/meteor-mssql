@@ -4,9 +4,7 @@ Sql = {};
 
 Sql.driver = sql;
 
-Sql.init = Meteor.wrapAsync(init);
-
-function init(){
+Sql.init = function(){
 
   if (! Sql.database ||
       ! Sql.database.user ||
@@ -18,7 +16,7 @@ function init(){
     });
   }
 
-}
+};
 
 
 Sql.q = Meteor.wrapAsync(sqlQuery);
