@@ -1,8 +1,8 @@
 Package.describe({
-  name: "emgee:mssql",
-  summary: "mssql wrapper: non-reactive SQL Server package",
-  version: "1.3.0_8",
-  git: "https://github.com/emgee3/meteor-mssql.git",
+  name: "willrbc:mssql",
+  summary: "mssql wrapper: non-reactive SQL Server package (customized)",
+  version: "1.3.3",
+  git: "https://github.com/willrbc/meteor-mssql.git",
   documentation: "README.md"
 });
 

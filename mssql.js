@@ -4,16 +4,21 @@ Sql = {};
 
 Sql.driver = sql;
 
-if (! Meteor.settings.database ||
-    ! Meteor.settings.database.user ||
-    ! Meteor.settings.database.password) {
-  console.error('mssql: Database unconfigured');
-} else {
-  Sql.connection = new Sql.driver.Connection(Meteor.settings.database, function (err) {
-    if (err) console.log("Can't connect to database");
-  });
-}
+Sql.init = Meteor.wrapAsync(init);
 
+function init(){
+
+  if (! Sql.database ||
+      ! Sql.database.user ||
+      ! Sql.database.password) {
+    console.error('mssql: Database unconfigured');
+  } else {
+    Sql.connection = new Sql.driver.Connection(Sql.database, function (err) {
+      if (err) console.log("Can't connect to database");
+    });
+  }
+
+}
 
 
 Sql.q = Meteor.wrapAsync(sqlQuery);
